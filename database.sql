@@ -11,6 +11,7 @@ CREATE TABLE "pets" (
     "breed" VARCHAR NOT NULL,
     "color" VARCHAR NOT NULL,
     "owner_id" INT,
+    "checked_in" BOOLEAN DEFAULT true NOT NULL ,
     PRIMARY KEY ("id"),
     FOREIGN KEY ("owner_id") REFERENCES "owners"("id")
 );

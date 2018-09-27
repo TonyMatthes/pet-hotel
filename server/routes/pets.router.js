@@ -4,7 +4,8 @@ const pool = require('../modules/pool.js');
 
 router.get('/', (req, res) => {
     console.log(req.query);
-    pool.query(`SELECT * FROM "pets"`
+    pool.query(`SELECT "name", "breed", "color", "first_name", "last_name" FROM "pets"
+                LEFT JOIN "owners" ON "owners"."id" = "pets"."owner_id"`
     ).then((results) => {
         res.send(results.rows);
     }).catch((error) => {

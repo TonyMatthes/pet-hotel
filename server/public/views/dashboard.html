@@ -1,1 +1,11 @@
 <h1>this is the dashboard</h1>
+
+<h2>{{vm.message}}</h2>
+
+<div>
+    <ul>
+        <li ng-repeat="pet in vm.response">
+            Owner: {{pet.first_name}} {{pet.last_name}}. Pet: {{pet.name}}, breed: {{pet.breed}}, Color: {{pet.color}}
+        </li>
+    </ul>
+</div>
