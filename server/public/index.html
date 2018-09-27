@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +14,18 @@
     <script src="vendors/angular-messages.min.js"></script>
     <script src="vendors/angular-material.min.js"></script>
     <script src="scripts/client.js"></script>
+    <script src="scripts/controllers/home.controller.js"></script>
+    <script src="scripts/controllers/dashboard.controller.js"></script>
+    <script src="scripts/controllers/owners.controller.js"></script>
 </head>
-<body>
-    <h1>PET HOTEL!!!</h1>
+
+<body ng-app="PetHotelApp">
+    <div>
+        <h1>PET HOTEL!!!</h1>
+    </div>
+
+    <ng-view></ng-view>
+
 </body>
+
 </html>
