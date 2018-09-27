@@ -1,0 +1,30 @@
+{
+  "name": "pet-hotel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TonyMatthes/pet-hotel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TonyMatthes/pet-hotel/issues"
+  },
+  "homepage": "https://github.com/TonyMatthes/pet-hotel#readme",
+  "dependencies": {
+    "angular": "^1.7.4",
+    "angular-animate": "^1.7.4",
+    "angular-aria": "^1.7.4",
+    "angular-material": "^1.1.10",
+    "angular-messages": "^1.7.4",
+    "angular-route": "^1.7.4",
+    "angularjs": "0.0.1",
+    "express": "^4.16.3"
+  }
+}
