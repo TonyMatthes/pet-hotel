@@ -2,8 +2,8 @@ petHotelApp.controller('DashboardController', ['$http', function ($http) {
     let vm = this;
 
     vm.message = "Dashboard";
-    vm.petToAdd = {name:'',breed:'',color:'',owner_id:''};
-    vm.owners=[];
+    vm.petToAdd = { name: '', breed: '', color: '', owner_id: '' };
+    vm.owners = [];
     // Add (POST) crew member to an existing ship
     vm.addPet = function (petToAdd) {
         console.log(petToAdd);
@@ -11,6 +11,19 @@ petHotelApp.controller('DashboardController', ['$http', function ($http) {
             method: 'POST',
             url: '/pets',
             data: petToAdd
+        }).then((response) => {
+            console.log('response', response);
+            vm.getPets();
+        }).catch((error) => {
+            console.log('error making request', error);
+            alert('Something went wrong! Check the server.');
+        });
+    };
+    vm.check = function (pet) {
+        $http({
+            method: 'PUT',
+            url: `/pets`,
+            params: pet
         }).then((response) => {
             console.log('response', response);
             vm.getPets();

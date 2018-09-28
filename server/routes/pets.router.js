@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 
 router.get('/', (req, res) => {
     console.log(req.query);
-    pool.query(`SELECT "name", "breed", "color", "first_name", "last_name", "checked_in" FROM "pets"
+    pool.query(`SELECT "pets"."id", "name", "breed", "color", "first_name", "last_name", "checked_in" FROM "pets"
                 LEFT JOIN "owners" ON "owners"."id" = "pets"."owner_id"`
     ).then((results) => {
         res.send(results.rows);
@@ -25,6 +25,25 @@ router.post('/', (req, res) => {
         })
         .catch((error) => {
             console.log('ERROR ADDING CREW - POST /crew -', error);
+            res.sendStatus(500);
+        });
+});
+router.put('/', (req, res) => {
+    console.log('PUT /pets', req.query);
+    petId=req.query.id;
+    let checkedIn = true;
+    if(req.query.checked_in==='true'){
+        checkedIn = false;
+    } else{
+        checkedIn = true;
+    };
+    pool.query(`UPDATE "pets" SET "checked_in"=$1
+                WHERE "id"=$2;`, [checkedIn, petId])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error making pet put query', error);
             res.sendStatus(500);
         });
 });
