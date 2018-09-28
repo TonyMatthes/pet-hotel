@@ -2,10 +2,27 @@
 
 <h2>{{vm.message}}</h2>
 
-<div>
-    <ul>
-        <li ng-repeat="pet in vm.response">
-            Owner: {{pet.first_name}} {{pet.last_name}}. Pet: {{pet.name}}, breed: {{pet.breed}}, Color: {{pet.color}}
-        </li>
-    </ul>
-</div>
+<form ng-submit="vm.addPet(vm.petToAdd)">
+    <input type="text" placeholder="name" ng-model="vm.petToAdd.name">
+    <input type="text" placeholder="breed" ng-model="vm.petToAdd.breed">
+    <input type="text" placeholder="color" ng-model="vm.petToAdd.color">
+    <select ng-model="vm.petToAdd.owner_id">
+        <option value="">---Please select---</option>
+        <option ng-repeat="owner in vm.owners" value="{{owner.id}}">{{owner.first_name}} {{owner.last_name}}</option>
+    </select>
+    <input type="submit">
+</form>
+
+<md-toolbar class="md-theme-light" layout=row layout-padding>
+    <p flex="20">Pet's name</p>
+    <p flex="20">Owner's name</p>
+    <p flex="40">Breed and Color</p>
+    <p>Check In</p>
+</md-toolbar>
+<md-divider layout="row" layout-xs="row" layout-padding ng-repeat="pet in vm.response">
+    <div flex="20">{{pet.name}}</div>
+    <div flex="20">Owner: {{pet.first_name}} {{pet.last_name}}.</div>
+    <div flex="40">Breed: {{pet.breed}}, Color: {{pet.color}}</div>
+    <md-button ng-hide="pet.checked_in" class="md-raised" ng-click="vm.check(pet)">Check In</md-button>
+    <md-button ng-show="pet.checked_in" class="md-raised" ng-click="vm.check(pet)">Check Out</md-button>
+</md-divider>

@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const petsRouter = require('./routes/pets.router');
+const ownersRouter = require('./routes/owners.router')
 //globals
 const PORT = process.env.PORT || 5000;
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 
 //-- routers
 app.use('/pets', petsRouter);
+app.use('/owners', ownersRouter);
 
 //spins
 

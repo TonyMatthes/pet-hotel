@@ -1,4 +1,4 @@
-const petHotelApp = angular.module('PetHotelApp', ['ngRoute','ngMaterial', 'ngMessages']);
+const petHotelApp = angular.module('PetHotelApp', ['ngRoute','ngMaterial','ngMessages']);
 
 petHotelApp.config(['$routeProvider', function ($routeProvider) {
 
