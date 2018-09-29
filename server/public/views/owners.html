@@ -1,6 +1,4 @@
-<h1>this is the owners page</h1>
-
-<h2>{{vm.message}}</h2>
+<md-content flex="80">
 <form ng-submit="vm.addOwner(vm.ownerToAdd)">
     <input type="text" placeholder="First Name" ng-model="vm.ownerToAdd.first_name">
     <input type="text" placeholder="Last Name" ng-model="vm.ownerToAdd.last_name"> 
@@ -16,3 +14,4 @@
     <div flex="40">{{owner.count}}</div>
     <md-button class="md-raised" ng-click="vm.deleteOwner(owner)">delete</md-button>
 </md-divider>
+</md-content>
