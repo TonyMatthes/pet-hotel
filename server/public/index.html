@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pet Hotel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="vendors/angular-material.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="vendors/angular-material.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/style.css"/>
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
     <script src="vendors/angular-aria.min.js"></script>
@@ -20,19 +21,7 @@
 </head>
 
 <body ng-app="PetHotelApp">
-        <md-toolbar layout="row" >
-                <md-nav-bar class="md-toolbar-tools" layout-align="space-around end">
-                    <md-nav-item md-nav-href="#!/" name="home">
-                        Home
-                    </md-nav-item>
-                    <md-nav-item md-nav-href="#!/dashboard" name="dashboard">
-                        Dashboard
-                    </md-nav-item>
-                    <md-nav-item md-nav-href="#!/owners" name="owners">
-                        Owners
-                    </md-nav-item>
-                </md-nav-bar>
-            </md-toolbar>
+
     <ng-view></ng-view>
 
 </body>

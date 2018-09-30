@@ -1,5 +1,14 @@
-petHotelApp.controller('OwnersController',['$http', function ($http){
+petHotelApp.controller('OwnersController',['$http','$mdSidenav', function ($http, $mdSidenav){
     let vm = this;
+
+    vm.toggleLeft = function() {
+        $mdSidenav('left')
+          .toggle();
+    };
+    
+    vm.close = function () {
+      $mdSidenav('left').close();
+    };
 
     vm.owners = [];
 
