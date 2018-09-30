@@ -1,10 +1,12 @@
-petHotelApp.controller('DashboardController', ['$http', function ($http) {
+petHotelApp.controller('DashboardController', ['$http', function ($http, $mdSidenav) {
     let vm = this;
-
-    vm.message = "Dashboard";
+    vm.showForm = false;
+    vm.toggleForm = function(){
+        vm.showForm = !vm.showForm;
+    };
     vm.petToAdd = { name: '', breed: '', color: '', owner_id: '' };
     vm.owners = [];
-    // Add (POST) crew member to an existing ship
+
     vm.addPet = function (petToAdd) {
         console.log(petToAdd);
         $http({
@@ -56,6 +58,19 @@ petHotelApp.controller('DashboardController', ['$http', function ($http) {
             alert('Something went wrong! Check the server.');
         });
     };
+
+    vm.deletePet = function (pet) {
+        $http({
+            method: 'DELETE',
+            url: `/pets/${pet.id}`
+        }).then((response) => {
+            vm.getPets();
+        }).catch((error) => {
+            console.log('error making rent get request', error);
+            alert('Something went wrong! Check the server.');
+        });
+    };
+
     vm.getPets();
     vm.getOwners();
 }]);

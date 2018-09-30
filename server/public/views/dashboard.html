@@ -1,6 +1,7 @@
 <section layout="row" layout-padding layout-xs="column">
-    <div flex="20">
-        <form ng-submit="vm.addPet(vm.petToAdd)">
+    <div ng-show="vm.showForm" flex="20" flex-xs="100">
+        <md-label for="addPet">Add a Pet</md-label>
+        <form name="addPet" ng-submit="vm.addPet(vm.petToAdd)">
             <md-input-container>
                 <input type="text" placeholder="name" ng-model="vm.petToAdd.name">
             </md-input-container>
@@ -18,30 +19,46 @@
             <md-button ng-click="vm.addPet(vm.petToAdd)">Submit Pet</md-button>
         </form>
     </div>
+
     <div flex>
         <div class="md-whiteframe-2dp">
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <h2>Pets</h2>
-            </div>
-        </md-toolbar>
-        <md-content layout-padding style="height:450px;">
-            <md-list layout-align="center end">
-                <md-subheader class="md-no-sticky">Pet List</md-subheader>
-                <md-list-item ng-click="null" class="md-3-line" ng-repeat="pet in vm.response | orderBy:'checked_in'">
-                    <div class="md-list-item-text" layout="column">
-                        <h3>{{pet.name}}</h3>
-                        <h4>{{pet.first_name}} {{pet.last_name}}</h4>
-                        <p>{{pet.breed}}, {{pet.color}}</p>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Pets</h2>
+                 <md-button class="md-raised" ng-click="vm.toggleForm()">Add a Pet</md-button>
+                </div>
+               
+            </md-toolbar>
+            <md-content layout-padding style="height:575px;">
+                <md-list layout-align="center end">
+                    <md-subheader class="md-sticky">Checked in</md-subheader>
+                    <md-list-item ng-click="null" class="md-3-line" ng-repeat="pet in vm.response | filter:{checked_in:true}">
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{pet.name}}</h3>
+                            <h4>{{pet.first_name}} {{pet.last_name}}</h4>
+                            <p>{{pet.breed}}, {{pet.color}}</p>
 
-                    </div>
-                    <md-button ng-hide="pet.checked_in" class="md-raised" ng-click="vm.check(pet)">Check In</md-button>
-                    <md-button ng-show="pet.checked_in" class="md-raised" ng-click="vm.check(pet)">Check Out</md-button>
-                    <md-button class="md-raised">Delete pet</md-button>
+                        </div>
+                        <md-button ng-hide="pet.checked_in" class="md-raised" ng-click="vm.check(pet)">Check In</md-button>
+                        <md-button ng-show="pet.checked_in" class="md-raised" ng-click="vm.check(pet)">Check Out</md-button>
+                        <md-button class="md-raised" ng-click="vm.deletePet(pet)">Delete pet</md-button>
 
-                </md-list-item>
-            </md-list>
-        </md-content>
+                    </md-list-item>
+                    <md-subheader class="md-sticky">Checked Out</md-subheader>
+                    <md-list-item ng-click="null" class="md-3-line" ng-repeat="pet in vm.response | filter:{checked_in:false}">
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{pet.name}}</h3>
+                            <h4>{{pet.first_name}} {{pet.last_name}}</h4>
+                            <p>{{pet.breed}}, {{pet.color}}</p>
+
+                        </div>
+                        <md-button ng-hide="pet.checked_in" class="md-raised" ng-click="vm.check(pet)">Check In</md-button>
+                        <md-button ng-show="pet.checked_in" class="md-raised" ng-click="vm.check(pet)">Check Out</md-button>
+                        <md-button class="md-raised" ng-click="vm.deletePet(pet)">Delete pet</md-button>
+
+                    </md-list-item>
+                </md-list>
+            </md-content>
         </div>
     </div>
 </section>
