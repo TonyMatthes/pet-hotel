@@ -1,34 +1,46 @@
-<section layout="row" layout-xs="column" layout-padding>
+<section style="height:100vh;" layout="row" layout-align="start stretch">
 
-        <md-sidenav layout="column" layout-align="start center" class="md-sidenav-left site-sidenav" md-is-locked-open="$mdMedia('gt-md')"
-        md-component-id="left" id="leftSideNav">
-        <md-toolbar layout layout-align="center center">
-            Navigation
-        </md-toolbar>
+    <md-sidenav md-whiteframe flex-gt-sm="20" class="md-sidenav-left nav" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" id="leftSideNav">
+        <header layout="column" layout-padding layout-align="center center">
+            <img src="../images/pethotel.png" alt="" style="height:200px;width:200px;">
+            <h1>Pet Hotel</h1>
+        </header>
         <md-content layout="column">
-                    <md-button flex="100" href="#!/">Home</md-button>      
-                    <md-button flex="100" href="#!/dashboard">Dashboard</md-button>  
-                    <md-button flex="100" href="#!/owners">Owners</md-button>
+            <md-button layout layout-align="start stretch" href="#!/">Home</md-button>
+            <md-button layout layout-align="start stretch" href="#!/dashboard">Dashboard</md-button>
+            <md-button layout layout-align="start stretch" href="#!/owners">Owners</md-button>
         </md-content>
     </md-sidenav>
-    <div>
-        <md-toolbar>Pets</md-toolbar>
-    <md-content flex>
-        <form ng-submit="vm.addOwner(vm.ownerToAdd)">
-            <input type="text" placeholder="First Name" ng-model="vm.ownerToAdd.first_name">
-            <input type="text" placeholder="Last Name" ng-model="vm.ownerToAdd.last_name">
-            <input type="submit">
-        </form>
-        <md-toolbar class="md-theme-light" layout=row layout-padding>
-            <p flex="40">owner</p>
-            <p flex="40">Pets</p>
-            <p>delete</p>
-        </md-toolbar>
-        <md-divider layout="row" layout-xs="row" layout-padding ng-repeat="owner in vm.owners">
-            <div flex="40">{{owner.first_name}} {{owner.last_name}}</div>
-            <div flex="40">{{owner.count}}</div>
-            <md-button class="md-raised" ng-click="vm.deleteOwner(owner)">delete</md-button>
-        </md-divider>
-    </md-content>
+    <div layout="column" flex>
+
+        <md-content layout="column" flex>
+            <md-toolbar class="md-primary md-hue-3" layout="row" layout-align="center center">Owners</md-toolbar>
+            <md-tabs md-whiteframe flex>
+                <md-tab label="Registered Owners">
+                    <md-list layout-align="center end">
+                        <md-list-item ng-repeat="owner in vm.owners" ng-click="vm.showOwnerDetails(owner)" class="md-2-line">
+                            <div class="md-list-item-text" layout="column">
+                                <h3>{{owner.first_name}} {{owner.last_name}}</h3>
+                                <h4>{{owner.count}} pets registered</h4>
+                            </div>
+                            <md-button class="md-raised" ng-click="vm.deleteOwner(owner)">Delete</md-button>
+                            <md-divider ng-if="!$last"></md-divider>
+                        </md-list-item>
+                    </md-list>
+                </md-tab>
+
+                <md-tab label="Register New Owner">
+                    <form ng-submit="vm.addOwner(vm.ownerToAdd)">
+                        <md-input-container>
+                            <input type="text" placeholder="First Name" ng-model="vm.ownerToAdd.first_name">
+                        </md-input-container>
+                        <md-input-container>
+                            <input type="text" placeholder="Last Name" ng-model="vm.ownerToAdd.last_name">
+                        </md-input-container>
+                        <md-button ng-click="vm.addOwner(vm.ownerToAdd)">Submit</md-button>
+                    </form>
+                </md-tab>
+            </md-tabs>
+        </md-content>
     </div>
 </section>

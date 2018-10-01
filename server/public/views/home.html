@@ -1,13 +1,14 @@
-<section>
-        <md-sidenav layout="column" layout-align="start center" class="md-sidenav-left site-sidenav" md-is-locked-open="$mdMedia('gt-md')"
-        md-component-id="left" id="leftSideNav">
-        <md-toolbar layout layout-align="center center">
-            Navigation
-        </md-toolbar>
-        <md-content layout="column">
-                    <md-button flex="100" href="#!/">Home</md-button>      
-                    <md-button flex="100" href="#!/dashboard">Dashboard</md-button>  
-                    <md-button flex="100" href="#!/owners">Owners</md-button>
-        </md-content>
-    </md-sidenav>
+<section style="height:100vh;" layout="row" layout-align="start stretch">
+    
+        <md-sidenav flex-gt-sm="20" class="md-sidenav-left nav" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" id="leftSideNav">
+            <header layout="column" layout-padding layout-align="center center">
+                <img src="../images/pethotel.png" alt="" style="height:200px;width:200px;">
+                <h1>Pet Hotel</h1>
+            </header>
+            <md-content layout="column">
+                <md-button layout layout-align="start stretch" href="#!/">Home</md-button>
+                <md-button layout layout-align="start stretch" href="#!/dashboard">Dashboard</md-button>
+                <md-button layout layout-align="start stretch" href="#!/owners">Owners</md-button>
+            </md-content>
+        </md-sidenav>
 </section>

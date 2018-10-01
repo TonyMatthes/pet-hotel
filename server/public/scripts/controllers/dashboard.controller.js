@@ -5,9 +5,10 @@ petHotelApp.controller('DashboardController', ['$http','$mdSidenav', function ($
           .toggle();
     };
     
-    vm.close = function () {
+    vm.closeLeft = function () {
       $mdSidenav('left').close();
     };
+
     vm.toggleRight = function() {
         $mdSidenav('right')
           .toggle();
@@ -16,9 +17,12 @@ petHotelApp.controller('DashboardController', ['$http','$mdSidenav', function ($
     vm.closeRight = function () {
       $mdSidenav('right').close();
     };
-    vm.closeLeft = function () {
-      $mdSidenav('left').close();
+
+    vm.showPetDetails = function(pet){
+        vm.toggleRight();
+        vm.petInDetail = pet;
     };
+    
     vm.petToAdd = { name: '', breed: '', color: '', owner_id: '' };
     vm.owners = [];
 
@@ -30,7 +34,6 @@ petHotelApp.controller('DashboardController', ['$http','$mdSidenav', function ($
             data: petToAdd
         }).then((response) => {
             console.log('response', response);
-            vm.close();
             vm.getPets();
         }).catch((error) => {
             console.log('error making request', error);
@@ -58,6 +61,7 @@ petHotelApp.controller('DashboardController', ['$http','$mdSidenav', function ($
         }).then(function (response) {
             console.log(response);
             vm.response = response.data;
+            vm.petToAdd = { name: '', breed: '', color: '', owner_id: '' }
         }).catch(function (error) {
             console.log('error making GET: ', error);
         });
